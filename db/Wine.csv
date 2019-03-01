@@ -1,0 +1,17 @@
+ID,name,type,sweetness,acidity,body
+1,champagne,sparkling,semi-sweet,acidic,medium
+2,prosecco,sparkling,semi-dry,acidic,light
+3,sauvignon blanc,dry white,dry,acidic,medium
+4,chardonnay,dry white,dry,acidic,full
+5,riesling,sweet white,semi-sweet,acidic,light
+6,moscato,sweet white,sweet,low acidic,light
+7,white zinfandel,rose,semi-dry,semi-acidic,light
+8,grenache rose,rose,dry,low acidic,full
+9,pinot noir,light red,semi-sweet,acidic,medium
+10,grenache,light red,sweet,low acidic,medium
+11,merlot,medium red,sweet,low acidic,full
+12,zinfandel,medium red,sweet,acidic,full
+13,cabernet sauvignon,bold red,dry,acidic,full
+14,malbec,bold red,dry,semi-acidic,bold,full
+15,port,dessert,very sweet,semi-acidic,full
+16,sherry,dessert,dry,low acidic,light
