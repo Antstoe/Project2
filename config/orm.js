@@ -44,7 +44,7 @@ var orm = {
         for (var i = 0; i < conditions.length; i++) {
             queryString += " " + conditions[i];
             //check if last item in array, if not add AND
-            if (!(conditions[i] == conditions.pop())) {
+            if (!(i +1 == conditions.length)) {
                 queryString += " AND";
             }
         }
@@ -58,13 +58,12 @@ var orm = {
     }
 };
 function test() {
-    var conditions = ["type = 'Sparkling'"]
+    var conditions = ["type = 'Sparkling'","body = 'light'"];
     orm.search("wine", conditions, function (result) {
         console.log(result);
-        return;
     });
 }
-// test();
+test();
 
 // Export the orm object for the model (burger.js)
 module.exports = orm;
