@@ -13,13 +13,12 @@ var orm = {
             cb(result);
         });
     },
-
-    createWeed: function (name, taste, effects, cb) {
-        var queryString = "INSERT INTO weed (name,taste,effects,image_link) VALUES (?,?,?,?)";
+    createWeed: function (name, taste, effects, winetype, image, cb) {
+        var queryString = "INSERT INTO weed (name,taste,effects,winetype,image) VALUES (?,?,?,?,?)";
 
         console.log(queryString);
 
-        connection.query(queryString, [name, taste, effects], function (err, result) {
+        connection.query(queryString, [name, taste, effects, winetype, image], function (err, result) {
             if (err) {
                 throw err;
             }
@@ -27,10 +26,30 @@ var orm = {
             cb(result);
         });
     },
-    createWine: function () {
+    createWine: function (type, name, style, taste, image_link, cb) {
         var queryString = "INSERT INTO wine (type,name,style,taste,image_link) VALUES (?,?,?,?,?)";
         // console.log(queryString);
-        connection.query(queryString, [type,name,style,taste,image_link], function (err, result) {
+        connection.query(queryString, [type, name, style, taste, image_link], function (err, result) {
+            if (err) {
+                throw err;
+            }
+            cb(result);
+        });
+    },
+    search: function (table, conditions, cb) {
+        var queryString = "SELECT * FROM ";
+        queryString += table;
+        queryString += " WHERE"
+        //insert conditions
+        for (var i = 0; i < conditions.length; i++) {
+            queryString += " " + conditions[i];
+            //check if last item in array, if not add AND
+            if (!(conditions[i] == conditions.pop())) {
+                queryString += " AND";
+            }
+        }
+        console.log(queryString);
+        connection.query(queryString, function (err, result) {
             if (err) {
                 throw err;
             }
@@ -38,6 +57,14 @@ var orm = {
         });
     }
 };
+function test() {
+    var conditions = ["type = 'Sparkling'"]
+    orm.search("wine", conditions, function (result) {
+        console.log(result);
+        return;
+    });
+}
+// test();
 
 // Export the orm object for the model (burger.js)
 module.exports = orm;
