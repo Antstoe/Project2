@@ -45,9 +45,6 @@ app.post("/api/survey", function (req, res) {
 
     });
 
-    wine.search(wineConditions,function(wine){
-
-    });
 });
 
 module.exports = app;
