@@ -1,153 +1,291 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Survey</title>
+	<title>CannaVino Survey</title>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="stylesheet" href="./theme/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./theme/css/animations.css">
+	<link rel="stylesheet" href="./theme/css/fonts.css">
+	<link rel="stylesheet" href="./theme/css/main.css" class="color-switcher-link">
+	<link rel="stylesheet" href="./theme/css/shop.css" class="color-switcher-link">
+	<script src="./theme/js/vendor/modernizr-2.6.2.min.js"></script>
+ <!-- Link jQuery -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <!-- Link jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <!-- Link Materialize JS -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    <!-- Link Materialize JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+ <!-- Link Materialize CSS -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-    <!-- Link Materialize CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    <!-- Link JavaScript file -->
-    <!-- <script src="../assets/js/survey.js"></script> -->
-
-    <!-- Link CSS file -->
-
+ <!-- Link JavaScript file -->
+ <script src="../assets/js/survey.js"></script>
 
 </head>
 
 <body>
-    <div class="container">
-        <!-- header -->
-        <div class="row">
-            <div class="col s6 offset-s3">
-                <h1>Survey</h1>
-            </div>
-        </div>
 
-        <!-- question -->
-        <div class="row">
-            <div class="col s6 offset-s3">
-                <div class="row">
-                    <div class="col s12">
-                        <div id="question"></div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s6">
-                        <div id="answers"></div>
-                    </div>
-                    <div class="col s6">
-                        <div id="image">image</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- End container div -->
-</body>
-<script>
-    $(document).ready(function () {
-        // define variables
-        var survey = [
-            {
-                question: "What type of effect are you looking for?",
-                answers: ["Energetic", "Invigorating", "Euphoric", "Calming", "Heady", "Sedating"],
-                image: ""
-            },
-            {
-                question: "What type of wine do you prefer?",
-                answers: ["Sparkling", "White", "Rosé", "Red", "Dessert"],
-                image: "",
-            },
-            {
-                question: "sweetness",
-                answers: ["Dry", "Semi-dry", "Semi-sweet", "Sweet", "Very Sweet"],
-                image: "",
-            },
-            {
-                question: "acidity",
-                answers: ["Low acidic", "Semi-acidic", "Acidic"],
-                image: "",
-            },
-            {
-                question: "body",
-                answers: ["Light", "Medium", "Full"],
-                image: "",
-            },
-            {
-                question: "Which flavor do you prefer?",
-                answers: ["Citrusy", "Fruity", "Earthy", "Spicy", "Coffee", "Vanilla", "Herbal"],
-                image: ""
-            }
-        ];
-
-        var count = 0;              // index of survey question
-        var userInput;              // user input
-        var userInputArr = [];      // array of user inputs
-
-        // display survey questions
-        function displaySurvey() {
-            // display question
-            $("#question").html(survey[count].question);
-
-            // display answers
-            for (var i = 0; i < survey[count].answers.length; i++) {
-                var p = $("<p>");
-                var button = $("<button>");
-                button.addClass("answerOption");
-                button.text(survey[count].answers[i]);
-                button.attr("data-value", survey[count].answers[i]);
-                p.append(button);
-                $("#answers").append(p);
-            }
-
-            // answer button on click event
-            $(".answerOption").on("click", function () {
-                var userInput = $(this).attr("data-value");
-                console.log(userInput);
-
-                // push to array
-                userInputArr.push(userInput);
-                console.log(userInputArr);
-
-                // check if end of survey
-                if (count === survey.length - 1) {
-                    console.log("End of survey");
-                    event.preventDefault();
-                    var surveyResults = {
-                        results: userInputArr
-                    };
-                    // send AJAX post
-                    $.post("/api/survey", surveyResults)
-                        .then(function (data) {
-                            // get results
-                            console.log(data) ;
-                        });
-                }
-                else {
-                    count++;
-
-                    // clear questions/answers/image
-                    $("#question").empty();
-                    $("#answers").empty();
-                    $("#image").empty();
-
-                    // display next survey question
-                    displaySurvey();
-                }
-            });
-        }
-
-        displaySurvey();
-    });
-</script>
-
-</html>
+	<div class="preloader">
+		<div class="preloader_image"></div>
+	</div>
+	<!-- search modal -->
+	<div class="modal" tabindex="-1" role="dialog" aria-labelledby="search_modal" id="search_modal"> <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		<span aria-hidden="true">
+			<i class="rt-icon2-cross2"></i>
+		</span>
+	</button>
+		<div class="widget widget_search">
+			<form method="get" class="searchform search-form form-inline" action="./">
+				<div class="form-group bottommargin_0"> <input type="text" value="" name="search" class="form-control" placeholder="Search keyword" id="modal-search-input"> </div> <button type="submit" class="theme_button no_bg_button">Search</button> </form>
+		</div>
+	</div>
+	<!-- Unyson messages modal -->
+	<div class="modal fade" tabindex="-1" role="dialog" id="messages_modal">
+		<div class="fw-messages-wrap ls with_padding">
+			<!-- Uncomment this UL with LI to show messages in modal popup to your user: -->
+			<!--
+		<ul class="list-unstyled">
+			<li>Message To User</li>
+		</ul>
+		-->
+		</div>
+	</div>
+	<!-- eof .modal -->
+	<!-- wrappers for visual page editor and boxed version of template -->
+    <div id="canvas">
+            <div id="box_wrapper">
+                <!-- template sections -->
+                <header class="page_header header_white toggler_right">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-12 display_table">
+                                    <div class="header_left_logo display_table_cell"> <a href="./21.html" class="logo logo_with_text">
+                                <img src="./theme/images/Vino_Logo.png" alt="">
+                                <span class="logo_text">
+                                    CannaVino
+                                    <small>Cannabis & Wine Pairing Guide</small>
+                                </span>
+                            </a> </div>
+                                    <div class="header_mainmenu display_table_cell text-right">
+                                        <!-- main nav start -->
+                                        <!-- <nav class="mainmenu_wrapper">
+                                            <ul class="mainmenu nav sf-menu">
+                                             
+                                        </nav> -->
+                                        <!-- eof main nav
+                                        header toggler<span class="toggle_menu"><span></span></span> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </header>	
+                <!-- SLIDER IMAGES -->
+                <section class="page_breadcrumbs ds parallax section_padding_top_40 section_padding_bottom_40">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<h2>Survey</h2>
+							<ol class="breadcrumb">
+								<li> <a href="./">
+							Find
+						</a> </li>
+								<li> Your</a> </li>
+								<li class="active">Pairing</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="ls section_padding_100">
+				<div class="container">
+					<!-- <div class="row">
+						<div class="col-sm-12">
+							<h2>Survey:</h2> -->
+	
+										<!-- header
+										<div class="row">
+											<div class="col s6 offset-s3">
+												<h1>Survey</h1>
+											</div>
+										</div> -->
+								
+										<!-- question -->
+										<div class="row">
+											<div class="col s6 offset-s3">
+												<div class="row">
+													<div class="col s12">
+														<div id="question"></div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col s6">
+														<div id="answers"></div>
+													</div>
+													<div class="col s6">
+														<div id="image">image</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div> <!-- End container div -->
+								</section>
+								<script>
+									$(document).ready(function () {
+										// define variables
+										var survey = [
+											{
+												question: "What type of effect are you looking for?",
+												answers: ["Energetic", "Invigorating", "Euphoric", "Calming", "Heady", "Sedating"],
+												image: ""
+											},
+											{
+												question: "What type of wine do you prefer?",
+												answers: ["Sparkling", "White", "Rosé", "Red", "Dessert"],
+												image: "",
+											},
+											{
+												question: "sweetness",
+												answers: ["Dry", "Semi-dry", "Semi-sweet", "Sweet", "Very Sweet"],
+												image: "",
+											},
+											{
+												question: "acidity",
+												answers: ["Low acidic", "Semi-acidic", "Acidic"],
+												image: "",
+											},
+											{
+												question: "body",
+												answers: ["Light", "Medium", "Full"],
+												image: "",
+											},
+											{
+												question: "Which flavor do you prefer?",
+												answers: ["Citrusy", "Fruity", "Earthy", "Spicy", "Coffee", "Vanilla", "Herbal"],
+												image: ""
+											}
+										];
+								
+										var count = 0;              // index of survey question
+										var userInput;              // user input
+										var userInputArr = [];      // array of user inputs
+								
+										// display survey questions
+										function displaySurvey() {
+											// display question
+											$("#question").html(survey[count].question);
+								
+											// display answers
+											for (var i = 0; i < survey[count].answers.length; i++) {
+												var p = $("<p>");
+												var button = $("<button>");
+												button.addClass("answerOption");
+												button.text(survey[count].answers[i]);
+												button.attr("data-value", survey[count].answers[i]);
+												p.append(button);
+												$("#answers").append(p);
+											}
+								
+											// answer button on click event
+											$(".answerOption").on("click", function () {
+												var userInput = $(this).attr("data-value");
+												console.log(userInput);
+								
+												// push to array
+												userInputArr.push(userInput);
+												console.log(userInputArr);
+								
+												// check if end of survey
+												if (count === survey.length - 1) {
+													console.log("End of survey");
+													event.preventDefault();
+													var surveyResults = {
+														results: userInputArr
+													};
+													// send AJAX post
+													$.post("/api/survey", surveyResults)
+														.then(function (data) {
+															// get results
+															console.log(data) ;
+														});
+												}
+												else {
+													count++;
+								
+													// clear questions/answers/image
+													$("#question").empty();
+													$("#answers").empty();
+													$("#image").empty();
+								
+													// display next survey question
+													displaySurvey();
+												}
+											});
+										}
+								
+										displaySurvey();
+									});
+								</script>
+						</div>
+					</div>
+				</div>
+			<!-- </section> -->
+			<footer class="page_footer ds section_padding_top_150 section_padding_bottom_130 columns_margin_bottom_30">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-3 col-md-12 text-center">
+								<div class="logo vertical_logo topmargin_20"> <img src="./theme/images/Vino_Logo.png" alt=""> <span class="logo_text">
+							CannaVino
+							<small>Cannabis & Wine Pairing Guide</small>
+						</span> </div>
+							</div>
+							<div class="col-lg-3 col-md-4 col-sm-6 text-center text-sm-left">
+								<div class="widget widget_text greylinks color2">
+									<h4 class="widget-title"> Contact Us </h4>
+									<div class="media small-media">
+										<div class="media-left"> <i class="fa fa-map-marker highlight2"></i> </div>
+										<div class="media-body">510 East Peltason Drive, Irvine, CA 92697</div>
+									</div>
+									<div class="media small-media">
+										<div class="media-left"> <i class="fa fa-pencil highlight2"></i> </div>
+										<div class="media-body"> <a href="mailto:marijuana@example.com">marijuana@example.com</a> </div>
+									</div>
+									<div class="media small-media">
+										<div class="media-left"> <i class="fa fa-internet-explorer highlight2"></i> </div>
+										<div class="media-body"> <a href="#">www.CannaVino.com</a> </div>
+									</div>
+									<div class="media small-media">
+										<div class="media-left"> <i class="fa fa-phone highlight2"></i> </div>
+										<div class="media-body"> (949) 824-5011 </div>
+									</div>
+									<div class="media small-media">
+										<div class="media-left"> <i class="fa fa-clock-o highlight2"></i> </div>
+										<div class="media-body">Working Hours: 24/7</div>
+									</div>
+								</div>
+							</div>
+				</footer>
+				<section class="ds ms page_copyright section_padding_50">
+					<div class="container">
+						<div class="row">
+							<div class="col-sm-12 text-center">
+								<p>&copy; The Juicy Dudes 2019</p>
+								<div class="social-links"> <a class="social-icon border-icon rounded-icon socicon-facebook" href="#" title="Facebook"></a> <a class="social-icon border-icon rounded-icon socicon-twitter" href="#" title="Twitter"></a> <a class="social-icon border-icon rounded-icon socicon-google"
+										href="#" title="Google"></a> </div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+			<!-- eof #box_wrapper -->
+		</div>
+		<!-- eof #canvas -->
+		<script src="./theme/js/compressed.js"></script>
+		<script src="./theme/js/main.js"></script>
+		
+	</body>
+	
+	</html>
