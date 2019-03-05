@@ -8,7 +8,7 @@ $(document).ready(function () {
         },
         {
             question: "What type of wine do you prefer?",
-            answers: ["Sparkling", "White", "Rosé", "Red", "Dessert"],
+            answers: ["Sparkling", "Dry White", "Sweet White", "Rosé", "Light Red", "Medium Red", "Bold Red", "Dessert"],
             image: "",
         },
         {
