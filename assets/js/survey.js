@@ -67,7 +67,7 @@ $(document).ready(function () {
                 console.log("End of survey");
 
                 // send AJAX post
-                $.post("", userInputArr)
+                $.post("/api/survey", userInputArr)
                     .then(function(data) {
                         // get results
                         console.log("Post user inputs.");

@@ -63,7 +63,7 @@ function test() {
         console.log(result);
     });
 }
-test();
+// test();
 
 // Export the orm object for the model (burger.js)
 module.exports = orm;

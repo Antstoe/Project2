@@ -1,17 +1,32 @@
 ID,name,type,sweetness,acidity,body
-1,champagne,sparkling,semi-sweet,acidic,medium
-2,prosecco,sparkling,semi-dry,acidic,light
-3,sauvignon blanc,dry white,dry,acidic,medium
-4,chardonnay,dry white,dry,acidic,full
-5,riesling,sweet white,semi-sweet,acidic,light
-6,moscato,sweet white,sweet,low acidic,light
-7,white zinfandel,rose,semi-dry,semi-acidic,light
-8,grenache rose,rose,dry,low acidic,full
-9,pinot noir,light red,semi-sweet,acidic,medium
-10,grenache,light red,sweet,low acidic,medium
-11,merlot,medium red,sweet,low acidic,full
-12,zinfandel,medium red,sweet,acidic,full
-13,cabernet sauvignon,bold red,dry,acidic,full
-14,malbec,bold red,dry,semi-acidic,bold,full
-15,port,dessert,very sweet,semi-acidic,full
-16,sherry,dessert,dry,low acidic,light
+1,Champagne,sparkling,semi-sweet,acidic,medium
+2,Prosecco,sparkling,semi-dry,acidic,light
+3,Sauvignon Blanc,dry white,dry,acidic,medium
+4,Chardonnay,dry white,dry,acidic,full
+5,Riesling,sweet white,semi-sweet,acidic,light
+6,Moscato,sweet white,sweet,low acidic,light
+7,White Zinfandel,rose,semi-dry,semi-acidic,light
+8,Grenache Rosé,rose,dry,low acidic,full
+9,Pinot Noir,light red,semi-sweet,acidic,medium
+10,Grenache,light red,sweet,low acidic,medium
+11,Merlot,medium red,sweet,low acidic,full
+12,Zinfandel,medium red,sweet,acidic,full
+13,Cabernet sauvignon,bold red,dry,acidic,full
+14,Malbec,bold red,dry,semi-acidic,bold,full
+15,Port,dessert,very sweet,semi-acidic,full
+16,Sherry,dessert,dry,low acidic,lightgit 
+17,Cava,sparkling,dry,acidic,full
+18,Pinot Grigio,dry white,dry,acidic,medium
+19,Roussanne,dry white,sweet,acidic,full
+20,Chenin Blank,sweet white,sweet,acidic,light
+21,Malvasia,sweet white,sweet,acidic,full
+22,White Merlot,rose,sweet,acidic,full
+23,Pinot Noir Rosé,rose,semi-sweet,acidic,medium
+24,Zweigelt,light red,dry,semi-acidic,medium
+25,Pinotage,light red,sweet,acidic,full
+26,Cabernet Franc,medium red,dry,semi-acidic,full
+27,Sangiovese,medium red,dry,acidic,medium
+28,Syrah,bold red,sweet,acidic,full
+29,Mourvedre,bold red,sweet,semi-acidic,full
+30,Tokaji,dessert,very sweet,acidic,full
+31,Ice Wine,dessert,sweet,acidic,medium
