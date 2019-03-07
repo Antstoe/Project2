@@ -291,11 +291,14 @@
 						// send AJAX post
 						$.post("/api/survey", surveyResults)
 							.then(function (data) {
-								// get results
-								console.log(data);
+                                // get results
+                                console.log("Post user inputs");
+								console.log(data.weed[0].name);
 
 								// display modal
-								$("#resultsModal").modal("open");
+                                $("#resultsModal").modal("open");
+                                $("#matchName").text(data.weed[0].name + " and " + data.wine[0].name );
+                                $("#matchPhoto").attr("src",data.weed[0].image);
 							});
 					}
 					else {

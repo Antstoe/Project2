@@ -28,22 +28,24 @@ app.post("/api/survey", function (req, res) {
     var body = surveyInput.results[4];
     var flavor = surveyInput.results[5];
 
-    var weedConditions =[`effects = '${effect}'`,`winetype = '${winetype}'`,`taste = '${flavor}'`];
-    var wineConditions =[`type  = '${winetype}'`,`sweetness = '${sweetness}'`, `acidity = '${acidity}'`,`body = '${body}'`]
+    var weedConditions = [`effects = '${effect}'`, `winetype = '${winetype}'`, `taste = '${flavor}'`];
+    var wineConditions = [`type  = '${winetype}'`, `sweetness = '${sweetness}'`, `acidity = '${acidity}'`, `body = '${body}'`]
 
-    weed.search(weedConditions,function(weeds){
+    weed.search(weedConditions, function (weeds) {
         console.log(weeds);
-        wine.search(wineConditions,function(wines){
+        wine.search(wineConditions, function (wines) {
             console.log(wine);
             surveyOutput = {
-                wine : wines,
-                weed : weeds
+                wine: wines,
+                weed: weeds
             }
+            console.log(surveyOutput);
             return res.json(surveyOutput);
-
         });
 
     });
+
+
 
 });
 

@@ -71,6 +71,8 @@ $(document).ready(function () {
                     .then(function(data) {
                         // get results
                         console.log("Post user inputs.");
+                        console.log(data.weed[0].name);
+                        $("#matchName").text(data.weed[0].name);
                     });
             }
             else {
