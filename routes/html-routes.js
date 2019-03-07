@@ -8,21 +8,34 @@ var path = require("path");
 var app = express();
 var PORT = 3000;
 app.use(express.urlencoded({ extended: true }));
-// HTML ROUTES
-//Get for Survey
+
+//Get for index homepage
 app.get("/", function (req, res) {
+    // res.sendFile(path.join(__dirname, "home.html"));
+    res.sendFile('index.html', { root: "./views/"});
+});
+app.get("/blog", function (req, res) {
+    // res.sendFile(path.join(__dirname, "home.html"));
+    res.sendFile('blog-full.html', { root: "./views/"});
+});
+app.get("/contacts", function (req, res) {
+    // res.sendFile(path.join(__dirname, "home.html"));
+    res.sendFile('contact4.html', { root: "./views/"});
+});
+app.get("/shop", function (req, res) {
+    // res.sendFile(path.join(__dirname, "home.html"));
+    res.sendFile('shop.html', { root: "./views/"});
+});
+app.get("/verified", function (req, res) {
+    // res.sendFile(path.join(__dirname, "home.html"));
+    res.sendFile('21.html', { root: "./views/"});
+});
+//Get for Survey
+app.get("/survey", function (req, res) {
     // res.sendFile(path.join(__dirname, "home.html"));
     res.sendFile('survey.html', { root: "./views/"});
 });
 
-//Get for Index
-// Route for Index
-app.use('./views/index', function(req, res){
-	res.sendFile(path.join(__dirname + './views/index.html'));
-	});
 
-// app.get("/survey", function (req, res) {
-//     res.sendFile('survey.html', { root: "./app/public/"});
-// });
 
 module.exports = app;
